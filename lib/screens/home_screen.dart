@@ -8,8 +8,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
+  bool isAuth = false;
+
+  Widget buildAuthScreen() {
+    return const Scaffold(
+      body: Text('Hello'),
+    );
+  }
+
+  Widget buildUnAuthScreen() {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -26,17 +33,34 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              "Connecting Hearts '❤️' ",
+          children: <Widget>[
+            const Text(
+              ' Connecting Hearts',
               style: TextStyle(
                 fontFamily: 'DancingScript',
                 fontSize: 100,
               ),
             ),
+            GestureDetector(
+              child: Container(
+                width: 260,
+                height: 60,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/google_signin_btn.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return isAuth ? buildAuthScreen() : buildUnAuthScreen();
   }
 }
