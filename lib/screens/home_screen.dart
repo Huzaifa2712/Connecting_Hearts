@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,6 +12,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isAuth = false;
+
+  login() {
+    googleSignIn.signIn();
+  }
 
   Widget buildAuthScreen() {
     return const Scaffold(
@@ -41,7 +48,11 @@ class _HomeState extends State<Home> {
                 fontSize: 100,
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             GestureDetector(
+              onTap: login(),
               child: Container(
                 width: 260,
                 height: 60,

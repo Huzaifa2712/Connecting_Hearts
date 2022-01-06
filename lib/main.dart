@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_network_app/screens/home_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.purple.shade800,
         ),
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }
